@@ -6,7 +6,7 @@
   <link href="https://hexosheng.github.io/atom.xml" rel="self"/>
   
   <link href="https://hexosheng.github.io/"/>
-  <updated>2021-11-20T02:26:11.146Z</updated>
+  <updated>2021-11-20T04:30:13.996Z</updated>
   <id>https://hexosheng.github.io/</id>
   
   <author>
@@ -21,10 +21,12 @@
     <link href="https://hexosheng.github.io/2021/11/20/da-jian-zi-ji-de-bo-ke/"/>
     <id>https://hexosheng.github.io/2021/11/20/da-jian-zi-ji-de-bo-ke/</id>
     <published>2021-11-20T02:23:02.000Z</published>
-    <updated>2021-11-20T02:26:11.146Z</updated>
+    <updated>2021-11-20T04:30:13.996Z</updated>
     
     
     
+    
+    <category term="MyBlog搭建" scheme="https://hexosheng.github.io/categories/MyBlog%E6%90%AD%E5%BB%BA/"/>
     
     
     <category term="web" scheme="https://hexosheng.github.io/tags/web/"/>
