@@ -6,7 +6,7 @@
   <link href="https://hexosheng.github.io/atom.xml" rel="self"/>
   
   <link href="https://hexosheng.github.io/"/>
-  <updated>2021-11-20T04:30:13.996Z</updated>
+  <updated>2021-11-21T01:14:29.190Z</updated>
   <id>https://hexosheng.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mysql基础搭建</title>
+    <link href="https://hexosheng.github.io/2021/11/21/mysql-ji-chu-da-jian/"/>
+    <id>https://hexosheng.github.io/2021/11/21/mysql-ji-chu-da-jian/</id>
+    <published>2021-11-20T23:32:24.000Z</published>
+    <updated>2021-11-21T01:14:29.190Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MySQL环境搭建&quot;&gt;&lt;a href=&quot;#MySQL环境搭建&quot; class=&quot;headerlink&quot; title=&quot;MySQL环境搭建&quot;&gt;&lt;/a&gt;MySQL环境搭建&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;1-MySQL的卸载&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="MySql" scheme="https://hexosheng.github.io/categories/MySql/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>搭建自己的博客</title>
