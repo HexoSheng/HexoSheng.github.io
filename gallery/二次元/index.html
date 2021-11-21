@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="contact, YueYue">
+    <meta name="keywords" content="二次元, YueYue">
     <meta name="description" content="YueYue">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>contact | YueYue</title>
+    <title>二次元 | YueYue</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -371,205 +371,70 @@
 
 </header>
 
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/css/barrager.css">
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/js/jquery.barrager.js"></script>
-
-<div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                月月的个人博客
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "世界很暗 但是你来了",
-                            
-                                "本网站是个人兴趣爱好 总结分享经验,记录生活点滴的平台,希望在以后的学习旅途中,走出自己的风景",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getMinutes() + '.jpg';
-  //$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
- $('.bg-cover').css('background-image', 'url(/medias/banner/6.jpg)');
-</script>
-
-
-    </div>
-</div>
-
-<style>
-    #send{
-        margin-bottom: 10px;
-        width: 49%;
-        background-color: #0ba360;
-    }
-    #clear{
-        margin-bottom: 10px;
-        width: 49%;
-        background-color: #e7c65c;
-    }
-    p{
-        text-align: center;
-    }
-</style>
-<main class="content">
-    <div id="contact" class="container chip-container">
-        <div class="card">
-            <div class="card-content">
-                <div class="tag-title center-align">
-                    <i class="fas fa-comments"></i>&nbsp;&nbsp;留言板
-                </div>
-                
-            </div>
-            <!--valine评论弹幕-->
-            
-                <p>
-                    <b>畅所欲言</b><br>
-                    <b>在这里可以留下你的足迹，欢迎在下方留言，欢迎交换友链</b><br>
-                    <b>友链信息</b><br>
-                    <b>博客名称: YueYue</b><br>
-                    <b>博客网址: https://hexosheng.github.io</b><br>
-                    <b>博客头像: https://hexosheng.github.io/medias/logo.png</b><br>
-                    <b>博客介绍: 犹豫就会败北</b><br>
-                </p>
-                <div class="container">
-                    <section id="custom" class="bb-section">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        文字：<input class="form-control" name="info" type="text" placeholder="hello, world"/>
-                                    </div>
-                                    <div class="form-group">
-                                        链接：<input class="form-control" name="href" type="text" placeholder="https://github.com/blinkfox/hexo-theme-matery"/>
-                                    </div>
-                                    <div class="form-group">
-                                        速度：<input  class="form-control"  name="speed" type="text" placeholder="5~20" value="16" />
-                                    </div>
-                                </form>
-                                <div class="form-group">
-                                    <button id="send"  class="btn" onclick="run()">留言</button>
-                                    <button id="clear" class="btn " onclick="clear_barrage()"> 清除</button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <script type="text/javascript">
-                    AV.init({
-                        appId: 'Sr1CBwJgXvSkIkSMKDts0toA-gzGzoHsz',
-                        appKey: 'DXQMkSv2liJUpfqJ6RI4njDJ'
-                    });
-
-                    $(function() {
-                        do_barrager();
-                        async function do_barrager() {
-                            let lists = [];
-                            //查询弹幕
-                            const query = new AV.Query('barrager');
-                            const barrager = await query.find().then((barrager) => {
-                                lists = barrager;
-                            })
-                            let length = lists.length;
-                            let index = 0;
-                            const timer = setInterval(() => {
-                                if (index === length) {
-                                    clearInterval(timer);
-                                    do_barrager()
-                                } else {
-                                    let obj = lists[index]
-                                    let jsonObject = eval('(' + JSON.stringify(obj) + ')');
-                                    $('body').barrager({
-                                        'img': '/medias/barrager/' + Math.floor(Math.random() * 3) + ".png",
-                                        'href': jsonObject.href,
-                                        'info': jsonObject.info,
-                                        'speed': jsonObject.speed
-                                    });
-                                    index++;
-                                }
-                            }, 500)
-                        }
-                    });
-
-                    //发送弹幕
-                    function  run(){
-                        let info = $('input[name=info]').val();
-                        (info === '' ) ?  info='hello world' : info=info;
-                        let href = $('input[name=href]').val();
-                        (href === '' ) ?  href='https://github.com/blinkfox/hexo-theme-matery' : href=href;
-                        let speed = parseInt($('input[name=speed]').val());
-                        if(speed > 20 || speed < 5)
-                            speed = Math.floor(Math.random() * 10) + 5;
-                        const Barrager = AV.Object.extend('barrager');
-                        const barrager = new Barrager();
-                        barrager.set('href', href);
-                        barrager.set('info', info);
-                        barrager.set('speed', speed);
-                        barrager.save().then((todo) => {
-                            $(" input[ name='info' ] ").val("")
-                            $(" input[ name='href' ] ").val("")
-                            $(" input[ name='speed' ] ").val("")
-                        });
+    <link rel="stylesheet" href="">
+<script src=""></script>
+<style> .my-gallery .photo img { transition: all 0.6s ease-in-out; } .my-gallery .photo:hover img { opacity: 0.6; transform: scale(1.05); } .my-gallery { margin: 20px auto; } .miaoshus .title { font-family: MV Boli; } .miaoshus { padding: 20px; border: 1px dashed #e6e6e6; color: #969696; position: relative; display: inline-block; width: 75%; background: #fbfbfb50; border-radius: 10px; font-size: 16px; margin: 24px auto 12px; } body.dark .miaoshus { background: 0 0; border: 1px dashed #888; } body { overflow: visible!important; } .box { position: relative; } .box img { width: 350px; vertical-align: top; padding: 8px; border-radius: 10px; transition: all 0.5s; } .box img:hover { transform: scale(1.05); } .page-footer { display: none } body { overflow-y: visible!important; } header { background-color: #000; } .biaotiss { font-family: MV Boli; } @media only screen and (max-width: 1058px) { .box { margin-left: 145px; } } @media only screen and (max-width: 770px) { .box { margin-left: 15px; } } @media only screen and (max-width: 500px) { #previous-button, #next-button { display: none; } } @media only screen and (max-width: 380px) { .box { margin-left: -5px; } } @media only screen and (max-width: 323px) { .box img { width: 296px; left: 0; } }
+ </style>
+<div class="tag-title center-align"> 
+    <div class="miaoshus"> 
+        <div class="title center-align">
+             "  二次元  " </div>
+              " 光影流年 " " 这里有光影流年，还有两朵穿衣裳的云，相拥在明天的河岸。" </div> </div>
+<section class="gallery"> <div id="myGallery" class="my-gallery"> <div class="row"> <div class="box">     <a target="_blank" rel="noopener" href="https://z3.ax1x.com/2021/11/21/IXFUi9.png" data-caption="二次元"> <img class="mat" src="/medias/loading.svg" data-src="https://z3.ax1x.com/2021/11/21/IXFUi9.png" alt="img"+0 > </a>   <a target="_blank" rel="noopener" href="https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg" data-caption="二次元"> <img class="mat" src="/medias/loading.svg" data-src="https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg" alt="img"+1 > </a>   <a target="_blank" rel="noopener" href="https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg" data-caption="二次元"> <img class="mat" src="/medias/loading.svg" data-src="https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg" alt="img"+2 > </a>   </div> </div> </div> </section>
+<script> $(function () { 
+    // 获取图片的宽度(200px) 
+    let imgWidth = $('.mat').outerWidth(); // 200 
+    waterfallHandler(); 
+    // 瀑布流处理 
+    function waterfallHandler() { 
+        // 获取图片的列数 
+        let column = parseInt($(window).width() / imgWidth); 
+        // 高度数组 
+        let heightArr = []; for(let i=0; i<column; i++) { heightArr[i] = 0; } 
+        // 遍历所有图片进行定位处理
+         $.each($('.mat'), function (index, item) { 
+             // 当前元素的高度 
+             let itemHeight = $(item).outerHeight();
+              // 高度数组最小的高度 
+              let minHeight = Math.min(...heightArr);
+               // 高度数组最小的高度的索引 
+               let minIndex = heightArr.indexOf(minHeight); $(item).css({ position: 'absolute', top: minHeight + 'px', left: minIndex * imgWidth + 'px' }); heightArr[minIndex] += itemHeight; }); } 
+               // 窗口大小改变 
+               $(window).resize(function () { waterfallHandler();
+             }); 
+            }); 
+               </script>
+               <script> baguetteBox.run('.gallery', { 
+                   // 配置参数
+                    buttons:Boolean,//是否显示导航按钮。 
+                    noScrollbars:true,//是否在显示时隐藏滚动条。 
+                    titleTag:true,//是否使用图片上的title属性作为图片标题
+                    async:false,//是否异步加载文件。 
+                });
+                start() 
+                $(window).on('scroll', function(){ start();
+                 })
+                 function start(){
+                  $('.gallery img').not('[data-isLoaded]').each(function(){ 
+                      var $node = $(this) 
+                      if( isShow($node) ){ loadImg($node); 
                     }
-
-                    function  clear_barrage()
-                    {
-                        $.fn.barrager.removeAll();
-                    }
-
+                });
+            }
+            
+            function isShow($node){
+                return $node.offset().top <= $(window).height() + $(window).scrollTop(); 
+                }
+            //加载图片 
+            function loadImg($img){ 
+                //.attr(值) 
+                //.attr(属性名称,值) 
+                $img.attr('src', $img.attr('data-src')); //把data-src的值 赋值给src 
+                $img.attr('data-isLoaded', 1);//已加载的图片做标记 
+            } 
                 </script>
-            
-        </div>
 
-        <!--其他评论card-->
-        <div class="card">
-            
 
-            
-
-            
-
-            
-
-            
-
-            
-
-            
-
-        </div>
-    </div>
-</main>
 
 
     <footer class="page-footer bg-color">
