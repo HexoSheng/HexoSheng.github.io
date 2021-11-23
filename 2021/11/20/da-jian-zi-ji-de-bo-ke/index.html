@@ -33,9 +33,9 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
   <script src="/live2d-widget/autoload.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>	
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="YueYue" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="YueYue" type="application/atom+xml">
 </head>
 
 
@@ -656,38 +656,340 @@
                 </div>
             </div>
             
-                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+                <style>
+    .post_reward {
+        position: relative;
+        margin-top: 4rem;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px
+    }
 
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="https://z3.ax1x.com/2021/11/22/oSN2xH.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="https://z3.ax1x.com/2021/11/22/oSNDVx.jpg" class="reward-img" alt="微信打赏二维码">
+    .reward_button {
+        display: inline-block;
+        cursor: pointer;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        -ms-transition: all .4s;
+        transition: all .4s;
+        width: 56px;
+        height: 56px;
+        line-height: 56px;
+        font-size: 20px;
+        color: #fff;
+        background-color: rgb(144, 144, 230);
+        border-radius: 50%;
+        transition: .4s ease-in-out;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)
+    }
+
+    .reward_main {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        z-index: 100;
+        display: none;
+        padding: 0 0 15px;
+        width: 100%;
+    }
+
+    .reward_button:hover
+    .reward_main {
+        -webkit-animation: donate_effcet .3s .1s ease both;
+        -moz-animation: donate_effcet .3s .1s ease both;
+        -o-animation: donate_effcet .3s .1s ease both;
+        -ms-animation: donate_effcet .3s .1s ease both;
+        animation: donate_effcet .3s .1s ease both;
+    }
+
+    #panel {
+        position: absolute;
+        top: 180px;
+        left: -320px;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000
+    }
+
+    #panel .panel_box {
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        -webkit-perspective: 600px;
+        perspective: 600px;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        will-change: transform;
+        -webkit-animation: dropDown .9s ease-out 0s 1 normal forwards running;
+        animation: dropDown .9s ease-out 0s 1 normal forwards running
+    }
+
+    #panel .wrapper {
+        width: 100vw;
+        height: 100vh;
+        will-change: transform;
+        -webkit-animation: dropWave 3s ease-out 0s 1 normal forwards running;
+        animation: dropWave 3s ease-out 0s 1 normal forwards running
+    }
+
+    #panel .long-line,
+    #panel .short-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 600px;
+        height: calc(50% - 180px);
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+
+    #panel .long-line div,
+    #panel .short-line div {
+        position: absolute;
+        width: 2px;
+        height: 150%;
+        background-color: #5d3523
+    }
+
+    #panel .short-line div {
+        bottom: 0
+    }
+
+    #panel .short-line div:first-child {
+        left: 55px
+    }
+
+    #panel .short-line div:nth-child(2) {
+        right: 55px
+    }
+
+    #panel .long-line div {
+        bottom: -25px
+    }
+
+    #panel .long-line div:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -4px;
+        bottom: -4px;
+        width: 10px;
+        height: 10px;
+        background-color: #5d3523;
+        border-radius: 50%
+    }
+
+    #panel .long-line div:first-child {
+        left: 25px
+    }
+
+    #panel .long-line div:nth-child(2) {
+        right: 25px
+    }
+
+    #panel .main_box {
+        pointer-events: all;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        text-align: center;
+        border-radius: 12px;
+        -webkit-box-shadow: rgba(0, 0, 0, .2) 0 0 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%)
+    }
+
+    #panel .main_box .header {
+        width: 100%;
+        height: 50px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 12px 12px 0 0;
+        border-bottom: 1px solid #5d3523;
+        background-color: #fbf4f1
+    }
+
+    #panel .main_box .header .inner {
+        margin: 0 auto;
+        width: 85%;
+        font-size: 20px;
+        line-height: 50px;
+        color: #5d3523;
+        letter-spacing: 1px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden
+    }
+
+    #panel .main_box .body {
+        position: relative;
+        width: 100%;
+        height: 260px;
+        background-color: #fff
+    }
+
+    #panel .main_box .body .swiper-wrapper {
+        width: 600px;
+        overflow: hidden
+    }
+
+    #panel .main_box .body .swiper-wrapper ul {
+        list-style: none
+    }
+
+    #panel .main_box .body .swiper-wrapper .swiper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        padding: 0
+    }
+
+    #panel .main_box .body .swiper-wrapper .swiper .swiper_li {
+        width: 50%
+    }
+
+    #panel .main_box .body .swiper-wrapper .swiper .swiper_li h3 {
+        color: hotpink
+    }
+
+
+    #panel .main_box .body .swiper-wrapper .swiper .swiper_li img {
+        width: 50%;
+    }
+
+    #panel .main_box .body .swiper-wrapper .animate {
+        -webkit-transition: -webkit-transform .4s ease-in-out;
+        transition: -webkit-transform .4s ease-in-out;
+        transition: transform .4s ease-in-out;
+        transition: transform .4s ease-in-out, -webkit-transform .4s ease-in-out
+    }
+
+    #panel .main_box .footer {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        border-radius: 0 0 12px 12px;
+        border-top: 1px solid #5d3523;
+        background-color: #fbf4f1
+    }
+
+    #panel .main_box .footer div {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 200px;
+        height: 50px;
+        font-size: 16px;
+        color: #f5f5f5;
+        line-height: 48px;
+        letter-spacing: 2px;
+        overflow: hidden;
+        border-style: none;
+        border-radius: 30px;
+        background-color: #d68fe9;
+        -webkit-transform: translate(-50%, 50%);
+        transform: translate(-50%, 50%);
+        -webkit-transition: all .5s cubic-bezier(.86, -.02, .08, 1.02) 0s;
+        transition: all .5s cubic-bezier(.86, -.02, .08, 1.02) 0s
+    }
+
+    #panel .main_box .footer div,
+    #panel .main_box .footer div:hover {
+        -webkit-box-shadow: #d68fe9 0 0 10px;
+        box-shadow: 0 0 10px #d68fe9
+    }
+
+    #panel .main_box .footer div:hover:before {
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+    #panel .main_box .footer div:after,
+    #panel .main_box .footer div:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 30px
+    }
+
+    #panel .main_box .footer div:before {
+        background-color: #b854d4;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: all .5s cubic-bezier(.86, -.02, .08, 1.02) 0s;
+        transition: all .5s cubic-bezier(.86, -.02, .08, 1.02) 0s
+    }
+
+    #panel .main_box .footer div:after {
+        content: attr(data-title);
+        color: #fff;
+        letter-spacing: 1px
+    }
+</style>
+
+        <div class="post_reward">
+            <div class="reward_button">
+                赏
+                <div class="reward_main" id="panel">
+                    <div class="panel_box">
+                        <div class="wrapper">
+                            <div class="short-line">
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="main_box">
+                                <div class="header">
+                                    <div class="inner">软妹币</div>
+                                </div>
+                                <div class="body">
+                                    <div class="swiper-wrapper">
+                                        <ul id="swiper" class="swiper animate">
+                                            <li class="swiper_li">
+                                                <h3>wechat</h3>
+                                                <img src="https://z3.ax1x.com/2021/11/23/opVttx.jpg"
+                                                     alt="wechat"
+                                                     class="cursor">
+                                            </li>
+                                            <li class="swiper_li">
+                                                <h3>alipay</h3>
+                                                <img src="https://z3.ax1x.com/2021/11/23/opVa9K.jpg"
+                                                     alt="alipay"
+                                                     class="cursor">
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div class="footer" id="make_reward_close">
+                                    <div data-title="打赏完毕 (●'◡'●)" class="cursor"></div>
+                                </div>
+                            </div>
+                            <div class="long-line">
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    document.getElementById("make_reward_close").onclick = function () {
+                        document.querySelector(".reward_main").style.display = "none"
+                    }
+                    document.querySelector(".reward_button").onmousemove = function () {
+                        document.querySelector(".reward_main").style.display = "block"
+                    }
+                </script>
             </div>
         </div>
-    </div>
-</div>
 
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
 
             
         </div>
