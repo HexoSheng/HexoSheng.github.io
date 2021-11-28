@@ -867,8 +867,8 @@
       //这里要换行
        new Valine({
         el: '#vcomments',
-        appId: 's4cUEl8wsYzPkeEQ0oNhLxYc-MdYXbMMI',
-        appKey: 'zfDJTu8I947SJifPpwuEB9qa',
+        appId: 'Sr1CBwJgXvSkIkSMKDts0toA-gzGzoHsz',
+        appKey: 'DXQMkSv2liJUpfqJ6RI4njDJ',
         notify: 'true' === 'true',
         verify: 'true' === 'true',
         visitor: 'true' === 'true',
@@ -879,34 +879,14 @@
         meta: ["nick", "mail", "link"],
         recordIP: 'true' === 'true',
         enableQQ: 'monsterid',
-        requiredFields: ["2df46cd9d268df77ff2dccb85a91fe3a"],
-        master: ["2df46cd9d268df77ff2dccb85a91fe3a"],
+        requiredFields: ["123abc508165c8eba9a77f872xxxx046", "2df46cd9d268df77ff2dccb85a91fe3a"],
+        master: ["123abc508165c8eba9a77f872xxxx046", "2df46cd9d268df77ff2dccb85a91fe3a"],
         friends: ["38ec6fb090a7c2456a5a1a0ce4de66cc", "c08508165c8eba9a77f8c2853xxxx09e", "901345d4c91ddfd8db0f175bbcfff0c8", "1512958e18378c98b498d5effe3e76ff"],
         tagMeta: ["博主", "小伙伴", "访客"],
-        metaPlaceholder: metaPlaceholder,
+        metaPlaceholder: metaPlaceholder
 
     });
   
-    document.body.addEventListener('click', function(e) {
-    if (e.target.classList.contains('vsubmit')) {
-        const email = document.querySelector('input[type=email]');
-        const nick = document.querySelector('input[name=nick]');
-        const reg = /^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-        if (!email.value || !nick.value || !reg.test(email.value)) {
-            const str = `<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
-            const vmark = document.querySelector('.vmark');
-            vmark.innerHTML = str;
-            vmark.style.display = 'block';
-
-            e.stopPropagation();
-
-            setTimeout(function() {
-                vmark.style.display = 'none';
-                vmark.innerHTML = '';
-            }, 2500);
-        }
-    }
-    }, true);
 </script>
         </div>
     </div>
