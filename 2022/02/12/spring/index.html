@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建自己的博客, YueYue">
-    <meta name="description" content="">
+    <meta name="keywords" content="Spring5框架, YueYue">
+    <meta name="description" content="1、Spring框架概述1、Spring是轻量级的开源的 JavaEE框架
+2、Spring可以解决企业应用开发的复杂性
+3、Spring有两个核心部分：IOC 和 AOP(1) IOC: 控制反转,把创建对象工程交给Spring进行管理
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>搭建自己的博客 | YueYue</title>
+    <title>Spring5框架 | YueYue</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -402,12 +405,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">搭建自己的博客</h1>
+                    <h1 class="description center-align post-title">Spring5框架</h1>
                 </div>
             </div>
         </div>
@@ -521,13 +524,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/web/">
-                                <span class="chip bg-color">web</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -535,8 +534,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MyBlog%E6%90%AD%E5%BB%BA/" class="post-category">
-                                MyBlog搭建
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
                             </a>
                         
                     </div>
@@ -548,7 +547,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-20
+                    2022-02-12
                 </div>
                 
 
@@ -569,7 +568,47 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="1、Spring框架概述"><a href="#1、Spring框架概述" class="headerlink" title="1、Spring框架概述"></a>1、Spring框架概述</h2><p><strong>1、Spring是轻量级的开源的 JavaEE框架</strong></p>
+<p><strong>2、Spring可以解决企业应用开发的复杂性</strong></p>
+<p><strong>3、Spring有两个核心部分：IOC 和 AOP</strong><br>(1) IOC: 控制反转,把创建对象工程交给Spring进行管理</p>
+<p>(2) Aop: 面向切面,不修改源代码进行功能增强</p>
+<p><strong>4、Spring特点</strong><br>(1) 方便解耦,简化开发</p>
+<p>(2) Aop编程支持</p>
+<p>(3) 方便程序测试</p>
+<p>(4) 方便和其他框架进行整合</p>
+<p>(5) 方便进行事务操作</p>
+<p>(5) 降低API开发难度</p>
+<p><strong>5、现在课程中,选取Spring版本5.x</strong><br><strong>### 入门案列</strong><br><strong>1、下载Spring5</strong><br>(1) 使用Spring最新版本5.3.15<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/HwcHtU"><img src="https://s4.ax1x.com/2022/02/12/HwcHtU.png" alt="HwcHtU.png"></a><br>(2)下载地址<br><a target="_blank" rel="noopener" href="https://repo.spring.io/ui/native/release/org/springframework/spring">https://repo.spring.io/ui/native/release/org/springframework/spring</a><br><strong>2、打开idea工具 创建Java普通工程</strong><br><strong>3、导入Spring相关jar包</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/HwRMlQ"><img src="https://s4.ax1x.com/2022/02/12/HwRMlQ.png" alt="HwRMlQ.png"></a><br><strong>4、创建普通类,在这个类创建普通方法</strong><br>   public void add(){<br>        System.out.println(“addd…..”);<br>    }<br><strong>5、创建Spring配置文件，在配置文件配置创建的对象</strong></p>
+<pre><code>    &lt;!--配置User对象创建--&gt;
+    &lt;bean id="user" class="com.atwc.spring5.User"&gt;&lt;/bean&gt;
+</code></pre>
+<p>(1) Spring配置文件使用xml格式<br><strong>6、进行测试代码编写</strong><br> @Test<br>    public void test(){<br>        //加载配置文件bean.xml<br>        ApplicationContext context=new ClassPathXmlApplicationContext(“bean.xml”);<br>        //获取配置文件创建的对象<br>        User user = context.getBean(“user”, User.class);<br>        System.out.println(user);<br>        user.add();<br>    }</p>
+<h2 id="2、IOC容器"><a href="#2、IOC容器" class="headerlink" title="2、IOC容器"></a>2、IOC容器</h2><p><strong>IOC(概念和原理)</strong><br><strong>1、什么是IOC</strong><br>(1) 控制反转, 把对象创建和对象之间的调用过程,交给Spring进行管理<br>(2) 使用IOC目的: 为了耦合度降低<br>(3) 做入门案列就是IOC实现</p>
+<p><strong>2、IOC底层原理</strong><br>(1) xml解析、工厂模式、反射</p>
+<p><strong>3、画图讲解IOC</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/Hw4k38"><img src="https://s4.ax1x.com/2022/02/12/Hw4k38.png" alt="Hw4k38.png"></a></p>
+<h3 id="IOC-接口"><a href="#IOC-接口" class="headerlink" title="IOC(接口)"></a>IOC(接口)</h3><p><strong>1、IOC思想基于IOC容器完成，IOC容器底层就是对象工厂</strong><br><strong>2、Spring提供IOC容器实现两种方式：（两个接口）</strong><br>(1)BeanFactory: IOC容器基本实现,是Spring内部的使用接口，不提供开发人员进行使用<br>加载配置文件时候不会创建对象，在获取对象或者使用对象的时候才会创建对象<br>(2)ApplicationContext: BeanFactory接口的子接口，提供更多强大的功能，一般由开发人员进行使用<br>加载配置文件时候就会把在配置文件对象进行创建<br><strong>3、ApplicationContext接口实现类</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/Hw4x2T"><img src="https://s4.ax1x.com/2022/02/12/Hw4x2T.png" alt="Hw4x2T.png"></a><br><strong>1、什么是Bean管理</strong><br>(0) Bean管理指的是两个操作<br>(1) Spring创建对象<br>(2) Spring注入属性<br><strong>2、Bean管理操作由两种方式</strong><br>(1) 基于xml配置文件方式实现<br>(2) 基于注解方式实现</p>
+<h3 id="IOC操作Bean管理-基于XMl方式"><a href="#IOC操作Bean管理-基于XMl方式" class="headerlink" title="IOC操作Bean管理(基于XMl方式)"></a>IOC操作Bean管理(基于XMl方式)</h3><p><strong>1、基于xml方式创建对象</strong><br>(1) 在Spring配置文件中，使用bean标签 标签里面添加对应属性，就可以实现对象创建<br>(2) 在bean标签有很多属性，介绍常用的属性<br>id属性:唯一标识<br>class属性: 类全路径(包类路径)<br>name属性: 可以加特殊符号<br>(3) 创建对象时候，默认也是执行无参数构造<br><strong>2、基于xml方式注入属性</strong><br>(1) DI:依赖注入，就是注入属性<br>3、第一种注入方式：使用set方法进行注入<br>(1) 创建类，定义属性和对应的set方法<br>public class Book {<br>    private String bname;<br>    private String bauthor;<br>    public void setBname(String bname) {<br>        this.bname = bname;<br>    }<br>    public void setBauthor(String bauthor) {<br>        this.bauthor = bauthor;<br>    }</p>
+<pre><code>@Override
+public String toString() {
+    return "Book{" +
+            "bname='" + bname + '\'' +
+            ", bauthor='" + bauthor + '\'' +
+            '}';
+}
+</code></pre>
+<p>}<br>(2) 在Spring配置文件配置对象创建，配置属性注入<br>   <!--2 set方法注入属性--><br>    bean id=”book” class=”com.atwc.spring5.Book”<br>        <!--使用property完成属性注入
+        name: 类里面属性名称
+        value:向属性注入的值
+        --><br>        property name=”bname” value=”卧槽”property<br>        property name=”bauthor” value=”我操”property<br>    bean<br>4、第二种注入方式: 使用有参数构造进行注入<br>(1) 创建类，定义属性 创建有参构造方法<br>public class Orders {<br>    private String oname;<br>    private String ovalue;<br>    public Orders(String oname,String ovalue){<br>        this.oname=oname;<br>        this.ovalue=ovalue;<br>    }<br>    @Override<br>    public String toString() {<br>        return “Orders{“ +<br>                “oname=’” + oname + ‘'‘ +<br>                “, ovalue=’” + ovalue + ‘'‘ +<br>                ‘}’;<br>    }<br>}<br>(2) 在Spring配置文件中 进行配置<br>  bean id=”order” class=”com.atwc.spring5.Orders”&gt;<br>       constructor-arg name=”oname” value=”1”&gt;constructor-arg<br>       constructor-arg name=”ovalue” value=”2”&gt;constructor-arg<br>  bean<br>5、p名称空间注入<br>(1) 使用p名称空间注入，可以简化基于xml配置方式<br>第一步 添加p名称空间在配置文件中<br>第二部 进行属性注入，在bean标签里面进行操作</p>
+<h3 id="IOC操作Bean管理-xml注入其他类型属性"><a href="#IOC操作Bean管理-xml注入其他类型属性" class="headerlink" title="IOC操作Bean管理(xml注入其他类型属性)"></a>IOC操作Bean管理(xml注入其他类型属性)</h3><p>1、字面量<br>(1) null值<br>用null标签<br>(2) 属性值包含特殊符号<br>![CDATA[&lt;&lt;值&gt;&gt;]]<br>2、注入属性-外部bean<br>(1) 创建两个类 service类和dao类<br>(2) 在service调用dao里面的方法<br>(3) 在spring配置文件中进行配置<br>3、注入属性-内部bean和级联赋值<br>(1) 一对多关系：部门和员工<br>一个部门有多个员工，一个员工属于一个部门<br>部门是一，员工是多<br>(2) 在实体类之间表示一对多关系<br>4、注入属性-级联赋值</p>
+<h3 id="IOC操作Bean管理（xml注入集合属性）"><a href="#IOC操作Bean管理（xml注入集合属性）" class="headerlink" title="IOC操作Bean管理（xml注入集合属性）"></a>IOC操作Bean管理（xml注入集合属性）</h3><p>1、注入数组类型属性</p>
+<p>2、注入List集合类型属性</p>
+<p>3、注入Map集合类型属性<br>(1) 创建类，定义数组，list,map,set类型属性 生成对应set方法<br>(2) 在spring配置文件进行配置<br>4、在集合里面设置对象类型值<br>property name=”list”<br>               list<br>                   ref bean=”course1”&gt;ref<br>                   ref bean=”course2”&gt;ref<br>               list<br>            property<br>5、把集合注入部分提取出来</p>
+<h3 id="IOC操作Bean管理-FactoryBean"><a href="#IOC操作Bean管理-FactoryBean" class="headerlink" title="IOC操作Bean管理(FactoryBean)"></a>IOC操作Bean管理(FactoryBean)</h3><p>1、Spring有两种类型bean,一种普通bean,另外一种工厂bean(FactoryBean)</p>
+<p>2、普通Bean: 在配置文件中定义bean类型就是返回类型</p>
+<p>3、工厂bean: 在配置文件定义bean类型可以和返回类型不一样<br>第一步 创建类，让这个类作为工厂bean,实现接口FactoryBean<br>第二步 实现接口里面的方法，在实现的方法中定义返回的bean类型</p>
+<h3 id="IOC操作Bean管理-Bean作用域"><a href="#IOC操作Bean管理-Bean作用域" class="headerlink" title="IOC操作Bean管理(Bean作用域)"></a>IOC操作Bean管理(Bean作用域)</h3><p>1、在Spring里面，设置创建bean实列是单实例还是多实列<br>2、在Spring里面，默认情况下，bean是单实例对象<br>设置单多实列scope: singleton 单实例 prototype 多实列  </p>
+<h3 id="IOC操作Bean管理-Bean生命周期"><a href="#IOC操作Bean管理-Bean生命周期" class="headerlink" title="IOC操作Bean管理(Bean生命周期)"></a>IOC操作Bean管理(Bean生命周期)</h3>
                 
             </div>
             <hr/>
@@ -595,7 +634,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hexosheng.github.io/2021/11/20/da-jian-zi-ji-de-bo-ke/">https://hexosheng.github.io/2021/11/20/da-jian-zi-ji-de-bo-ke/</a>
+                    <a href="https://hexosheng.github.io/2022/02/12/spring/">https://hexosheng.github.io/2022/02/12/spring/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -632,11 +671,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/web/">
-                                    <span class="chip bg-color">web</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1013,6 +1048,47 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2022/03/06/springsecurity/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="SpringSecurity">
+                        
+                        <span class="card-title">SpringSecurity</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2021/11/21/mysql-ji-chu-da-jian/">
                     <div class="card-image">
                         
@@ -1029,9 +1105,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1043,56 +1119,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/20/da-jian-zi-ji-de-bo-ke/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="搭建自己的博客">
-                        
-                        <span class="card-title">搭建自己的博客</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/MyBlog%E6%90%AD%E5%BB%BA/" class="post-category">
-                                    MyBlog搭建
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
                 </div>
                 
             </div>
